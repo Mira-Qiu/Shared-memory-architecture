@@ -13,4 +13,13 @@ The threads API we are using here is from POSIX(Portable Operating System Interf
 <br>
 
 [Example1](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/a1.c)<br>
-<code>pthread* thread_handles</code>: Declares variable to be able to point to an array of type pthread_t. (**C structure** describes the thread properties)<br>
+<ul>a. <code>pthread* thread_handles</code>: Declares variable to be able to point to an array of type pthread_t. (**C structure** describes the thread properties)<br>
+b. <code>thread_handles = malloc(thread_count*sizeof(pthread_t))</code>: creates an array 5 elements of type pthread_t.<br>
+c. <code>pthread_create(&thread_handles[thread],NULL,Hello,(void)*thread)</code>: create thread and stores them in the array <code>thread_handles</code>.
+  <ul>c.1 <code>NULL</code>: 是一个参数指向一个<code>pthread_attr_t</code> structure里面的内容决定线程的属性。大多数时间为空.<br>
+    c.2 <code>Hello</code>: function Hello.<br></ul>
+  d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits for the threads to terminate. Null is the status of the thread when it terminates. For example,if the thread was canceled, the value of this argument is : PTHREAD_CANCELED.<br></ul>
+
+
+    
+    
