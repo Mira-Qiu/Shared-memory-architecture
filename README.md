@@ -13,6 +13,7 @@ The threads API we are using here is from POSIX(Portable Operating System Interf
 <br>
 
 ## 2. Examples
+
 [Example1](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/a1.c)<br>
 <ul>a. <code>pthread* thread_handles</code>: Declares variable to be able to point to an array of type pthread_t. (**C structure** describes the thread properties)<br>
 b. <code>thread_handles = malloc(thread_count*sizeof(pthread_t))</code>: creates an array 5 elements of type pthread_t.<br>
@@ -22,8 +23,10 @@ c. <code>pthread_create(&thread_handles[thread],NULL,Hello,(void)*thread)</code>
 d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits for the threads to terminate. Null is the status of the thread when it terminates. For example,if the thread was canceled, the value of this argument is : PTHREAD_CANCELED.<br>
   e. <code>free(thread_handles)</code>: de-allocates the space allocated by <code>malloc(thread_count*sizeof(pthread_t))</code> in heap segment.<br>
 </ul>
-[Example2](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/Example2.c) The program function take 3 parameters <br>
-<ul><code>record_type *data = (record_type)*args</code> means take a number of bytes from the first byte of <code>args</code>.How many bytes? That many of the sizeof the record <code>record_type</code>. The size of thsi record is 12 (4bytes for rank, 4 bytes for a and 4 bytes for b) and the variable data points to this record.<br></ul>
+
+[Example2](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/Example2.c) <br>
+<ul>The program function take 3 parameters <br>
+<code>record_type *data = (record_type)*args</code> means take a number of bytes from the first byte of <code>args</code>.How many bytes? That many of the sizeof the record <code>record_type</code>. The size of thsi record is 12 (4bytes for rank, 4 bytes for a and 4 bytes for b) and the variable data points to this record.<br></ul>
 
 ## 3. Matrix-vector multiplications
 
