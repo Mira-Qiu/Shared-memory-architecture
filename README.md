@@ -29,6 +29,18 @@ d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits f
 <code>record_type *data = (record_type)*args</code> means take a number of bytes from the first byte of <code>args</code>.How many bytes? That many of the sizeof the record <code>record_type</code>. The size of thsi record is 12 (4bytes for rank, 4 bytes for a and 4 bytes for b) and the variable data points to this record.<br></ul>
 
 ## 3. Matrix-vector multiplications
+[Example3](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/Example3-Matrix-VectorMulti.c)<br>
+<ul>The parallel program makes a vector y of size n by multiplying an m\*n matrix a and a Vector x of size n. Each thread multiplies its rows to the vector.<br>
+<code>local_m = m/thread_count</code>: local_m is 2. 前两行给thread0， 第二个2行给thread1， 第三个2行给thread2. 也就是说每个thread运行找到2个y值。 This program was easy to hanle because no two threads write to the same location and there is no thread that reads from a location while the other thread read from the location.<br>
+</ul>
+
+## 4. Critical sections
+***Critical Section*** :a segment of the program that only one thread at any time must enter to this segment to execute it.只有一个线程在任意时间必须进入这个片段并运行它。<br>
+
+[Example4.c](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/Example4_calculate_Pi.c)<br>
+
+
+
 
 
 
