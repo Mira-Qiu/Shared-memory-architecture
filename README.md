@@ -18,7 +18,9 @@ b. <code>thread_handles = malloc(thread_count*sizeof(pthread_t))</code>: creates
 c. <code>pthread_create(&thread_handles[thread],NULL,Hello,(void)*thread)</code>: create thread and stores them in the array <code>thread_handles</code>.
   <ul>c.1 <code>NULL</code>: 是一个参数指向一个<code>pthread_attr_t</code> structure里面的内容决定线程的属性。大多数时间为空.<br>
     c.2 <code>Hello</code>: function Hello.<br></ul>
-  d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits for the threads to terminate. Null is the status of the thread when it terminates. For example,if the thread was canceled, the value of this argument is : PTHREAD_CANCELED.<br></ul>
+d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits for the threads to terminate. Null is the status of the thread when it terminates. For example,if the thread was canceled, the value of this argument is : PTHREAD_CANCELED.<br>
+  e. <code>free(thread_handles)</code>: de-allocates the space allocated by <code>malloc(thread_count*sizeof(pthread_t))</code> in heap segment.<br>
+</ul>
 
 
     
