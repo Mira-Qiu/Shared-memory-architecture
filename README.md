@@ -15,6 +15,8 @@ The threads API we are using here is from POSIX(Portable Operating System Interf
 ## 2. Examples
 
 [Example1](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/a1.c)<br>
+* Compile: <strong> gcc -g -Wall a.c -lpthread</strong><br>
+* Run : <strong> ./a.out</strong><br>
 <ul>a. <code>pthread* thread_handles</code>: Declares variable to be able to point to an array of type pthread_t. (**C structure** describes the thread properties)<br>
 b. <code>thread_handles = malloc(thread_count*sizeof(pthread_t))</code>: creates an array 5 elements of type pthread_t.<br>
 c. <code>pthread_create(&thread_handles[thread],NULL,Hello,(void)*thread)</code>: create thread and stores them in the array <code>thread_handles</code>.
@@ -40,6 +42,7 @@ d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits f
 [Example4.c](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/Example4_calculate_Pi.c)<br>
 
 
+## 5. Busy-Waiting
 
 
 
