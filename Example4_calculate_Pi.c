@@ -33,7 +33,7 @@ void *Thread_sum(void* rank){
   long long my_first_i = my_n*my_rank;
   long long my_last_i = my_first_i + my_n;
   if(my_first_i % 2 == 0) factor = 1;
-  else factor = -1;
+  else factor = -1;                                  // factor = my_first_i % 2 == 0 ? 1 : -1;
   for(i = my_first_i; i < my_last_i; i++){
     sum += factor/(2*i+1);
     factor = -factor;
