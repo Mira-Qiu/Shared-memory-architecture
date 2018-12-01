@@ -40,9 +40,21 @@ d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits f
 ***Critical Section*** :a segment of the program that only one thread at any time must enter to this segment to execute it.只有一个线程在任意时间必须进入这个片段并运行它。<br>
 
 [Example4.c](https://github.com/Mira-Qiu/Shared-memory-architecture/blob/master/Example4_calculate_Pi.c)<br>
-
+* 每个线程运行20000条，the value of the global varibale **sum** is the result of all 100,000 terms.<br>
+* Problem: The variable **sum** is shared by all threads. **The section: sum += factor/(2\*i+1) in the above program is called a critical sections**<br>
 
 ## 5. Busy-Waiting
+
+* The critical section has only one line: sum += 2. When the value of: flag is 1 thread 1 (my_rank=1) passes the while-loop and enters to the critical section. But thread 0 has to sit on the while-loop doing nothing. Once thread 1 finishes the critical section it changes the value of: flag to 0 (flag = (flag + 1) % thread_count). Now thread 0 can go to the critical section but thread 1 has to wait on the while-loop. Clearly this is a busy waiting approach.<br>
+* Unfortunately, if thread 0 runs on a much faster processor than thread 1, or if we had a conditional statement as part of the critical-section to terminate one of the threads the other one sits on the while-loop forever. <br>
+* Note that this method requires two threads strictly alternate in entering the critical section. What happen if one thread needs a long time to execute its other code that is not part of the critical section? Why the other one has to wait on the while-loop? This is not a fair approach.<br>
+
+# 6. Mutexes
+* A better approach to the probelm critical section.<br>
+* Excludes the other threads from entering CS while one thread is inside CS:
+<code> pthread_mutex_lock(&mutex);</code><br>
+
+
 
 
 
