@@ -61,7 +61,7 @@ d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits f
   sem_name : points to a semaphore object to initialize.<br>
   pshared : is a flag inidicating this semaphore is to be shared between the threads, or between processes. 0 -> shared between the threads.<br>
   value : is an initial value to set the semaphore to. 0 -> sem_name is locked.<br>
-  <code>int sem_wait(sem_t *sem_name): 
+  <code>int sem_wait(sem_t *sem_name)</code>: 
   If value of semaphore is  ZERO, then the calling thread blocks(waits). <br>
   If the value of the semaphore is greater than ZERO this value is decremented ( by 1) and the calling thread proceeds(does not wait). <br>
   One of the blocked threads wakeds up when another thread calls: <code>sem_post</code>.<br>
