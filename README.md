@@ -66,3 +66,5 @@ d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits f
   If the value of the semaphore is greater than ZERO this value is decremented ( by 1) and the calling thread proceeds(does not wait). <br>
   One of the blocked threads wakeds up when another thread calls: <code>sem_post</code>.<br>
   <code>int sem_post(sem_t* sem_name)</code> : This is the prototype. this call increments the value of the semaphore and wakes up a blocked thread waiting on this semaphore, if any. <br>
+<br>
+* Every sending thread calls sem_post once. Since the value of the semaphore is 0, the system wakes up a receiving thread that is waiting on it. Since the value of the semaphore is 0, the system wakes up a receiving thread that is waiting on it. The receiving thread of the rank: 0 was waiting on: <code>sem_wait(&sem_name[0])</code>. Now it does not wait anymore and execute the next instruction which is: printf("%s\n", messages[0]). Since the sending thread already filled message[0] with a message we do not get a No message message from this thread. <br》
