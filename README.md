@@ -65,12 +65,4 @@ d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits f
   If value of semaphore is  ZERO, then the calling thread blocks(waits). <br>
   If the value of the semaphore is greater than ZERO this value is decremented ( by 1) and the calling thread proceeds(does not wait). <br>
   One of the blocked threads wakeds up when another thread calls: <code>sem_post</code>.<br>
-
-
-
-
-
-
-
-    
-    
+  <code>int sem_post(sem_t* sem_name)</code> : This is the prototype. this call increments the value of the semaphore and wakes up a blocked thread waiting on this semaphore, if any. <br>
