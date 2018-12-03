@@ -68,3 +68,8 @@ d. <code>pthread_join(thread_handles[thread],NULL);</code>: this fuction waits f
   <code>int sem_post(sem_t* sem_name) </code> : This is the prototype. this call increments the value of the semaphore and wakes up a blocked thread waiting on this semaphore, if any. <br>
 <br>
 Every sending thread calls sem_post once. Since the value of the semaphore is 0, the system wakes up a receiving thread that is waiting on it. Since the value of the semaphore is 0, the system wakes up a receiving thread that is waiting on it. The receiving thread of the rank: 0 was waiting on: <code>sem_wait(&sem_name[0])</code>. Now it does not wait anymore and execute the next instruction which is: printf("%s\n", messages[0]). Since the sending thread already filled message[0] with a message we do not get a No message message from this thread. <br>
+
+# 8. Barriers and conditional variables
+
+* Synchronize threas method: busy-waiting(not recommend), muxes, semaphores and/or condition-variables.<br>
+* <strong>Note</strong>: in general we cannot use pthread_join as a barrier since this function waits until all the threads terminate. we may have a situation where all threads had to do something reach to a point of the program and from this point continue for more work<br>
