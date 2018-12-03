@@ -73,3 +73,4 @@ Every sending thread calls sem_post once. Since the value of the semaphore is 0,
 
 * Synchronize threas method: busy-waiting(not recommend), muxes, semaphores and/or condition-variables.<br>
 * <strong>Note</strong>: in general we cannot use pthread_join as a barrier since this function waits until all the threads terminate. we may have a situation where all threads had to do something reach to a point of the program and from this point continue for more work<br>
+* Obviously busy-waiting loop waste the time of CPUs. this loop does not let the processors to execute some other usefule tasks in the system. But semaphores and mutex do. <strong>Note</strong>: unlike busy-waiting a thread who is waiting on a mutex or a semaphore relinquished the CPU.<br>
